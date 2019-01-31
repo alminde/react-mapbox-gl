@@ -96,6 +96,9 @@ export interface FactoryParameters {
   bearingSnap?: number;
   injectCSS?: boolean;
   transformRequest?: RequestTransformFunction;
+  collectResourceTiming?: boolean;
+  fadeDuration?: number;
+  crossSourceCollisions?: boolean;
 }
 
 // Satisfy typescript pitfall with defaultProps
@@ -137,7 +140,10 @@ const ReactMapboxFactory = ({
   failIfMajorPerformanceCaveat = false,
   bearingSnap = 7,
   injectCSS = true,
-  transformRequest
+  transformRequest,
+  collectResourceTiming,
+  fadeDuration,
+  crossSourceCollisions
 }: FactoryParameters) => {
   if (injectCSS) {
     // tslint:disable-next-line:no-submodule-imports
@@ -230,7 +236,10 @@ const ReactMapboxFactory = ({
         logoPosition,
         bearingSnap,
         failIfMajorPerformanceCaveat,
-        transformRequest
+        transformRequest,
+        collectResourceTiming,
+        fadeDuration,
+        crossSourceCollisions
       };
 
       if (bearing) {
